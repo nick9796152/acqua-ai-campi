@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 {% from "macros.html" import fig, fig_url, meta, bar %}
 {% block content %}
-<p class="crumbs"><a href="/">Home</a> › {{ cm.province }}</p>
+<p class="crumbs"><a href="{{ base }}/">Home</a> › {{ cm.province }}</p>
 <h1>{{ cm.name }}</h1>
 <p class="lead">Acqua per l'irrigazione · provincia di {{ cm.province }}</p>
 
 {% if not cons %}
 <div class="warn"><strong>Per questo comune non abbiamo ancora il consorzio di bonifica.</strong>
 Non esiste un elenco pubblico dei comuni per ogni consorzio, e finora abbiamo trovato solo quello di due consorzi. Non vogliamo indovinare: <span class="na">{{ NA }}</span>.
-Puoi vedere i <a href="/">volumi di tutti gli invasi</a> e rivolgerti al consorzio della tua zona.</div>
+Puoi vedere i <a href="{{ base }}/">volumi di tutti gli invasi</a> e rivolgerti al consorzio della tua zona.</div>
 {% endif %}
 
 {% for k in cons %}
 <h2>Consorzio di bonifica</h2>
 <div class="card">
-<p class="big"><a href="/consorzio/{{ k.c.id }}/">{{ k.c.name }}</a></p>
-{% if k.parent %}<p>Fa parte del <a href="/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a>.</p>{% endif %}
+<p class="big"><a href="{{ base }}/consorzio/{{ k.c.id }}/">{{ k.c.name }}</a></p>
+{% if k.parent %}<p>Fa parte del <a href="{{ base }}/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a>.</p>{% endif %}
 <p><strong>Il comune è nel comprensorio del consorzio</strong> <small class="meta">({{ k.m.label }} {{ k.m.date_text }} · <a href="{{ k.m.url }}">fonte</a>).</small>
 {% if k.m.area_ha_in_comprensorio %}Del territorio di {{ cm.name }} ricadono nel comprensorio <strong>{{ k.m.area_ha_in_comprensorio|int|ha }} ettari</strong> (non tutto il comune). {% elif k.m.zone %}È stato aggiunto al comprensorio ({{ k.m.zone }}); l'estensione non è indicata.{% else %}L'elenco non dice quanta parte del comune è compresa.{% endif %}
 Essere nell'elenco non significa che l'acqua arrivi a ogni azienda.</p>
@@ -25,7 +25,7 @@ Essere nell'elenco non significa che l'acqua arrivi a ogni azienda.</p>
 {% if k.direct %}
 {% for r in k.direct %}
 <div class="card">
-<h3><a href="/invaso/{{ r.slug }}/">Invaso {{ r.name }}</a></h3>
+<h3><a href="{{ base }}/invaso/{{ r.slug }}/">Invaso {{ r.name }}</a></h3>
 {% if r.now %}
 <p class="big">{{ fig(r.now.stored_m3|vol, latest.doc_date|it_date, latest, r.now.source_page) }}</p>
 <p>Lo stesso mese dell'anno scorso: {% if r.last_year %}{{ fig(r.last_year.stored_m3|vol, latest.doc_date|it_date, latest, r.last_year.source_page, label="nel prospetto del") }}{% else %}<span class="na">{{ NA }}</span>{% endif %}.
@@ -41,10 +41,10 @@ Essere nell'elenco non significa che l'acqua arrivi a ogni azienda.</p>
 {% endfor %}
 </div>
 {% endfor %}
-{% if k.regional_n %}<p>Il {{ (k.parent or k.c).name }} usa anche altri {{ k.regional_n }} invasi; per molti non sappiamo quale distretto servano. <a href="/consorzio/{{ (k.parent or k.c).id }}/">Vedi l'elenco</a>.</p>{% endif %}
+{% if k.regional_n %}<p>Il {{ (k.parent or k.c).name }} usa anche altri {{ k.regional_n }} invasi; per molti non sappiamo quale distretto servano. <a href="{{ base }}/consorzio/{{ (k.parent or k.c).id }}/">Vedi l'elenco</a>.</p>{% endif %}
 {% else %}
 <p class="na">{{ NA }}: per questo consorzio nessun documento collega un invaso al distretto del comune.</p>
-{% if k.parent %}<p>Vedi gli invasi del <a href="/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a> e il <a href="/">quadro di tutta la Sicilia</a>.</p>{% endif %}
+{% if k.parent %}<p>Vedi gli invasi del <a href="{{ base }}/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a> e il <a href="{{ base }}/">quadro di tutta la Sicilia</a>.</p>{% endif %}
 {% endif %}
 
 <h2>Quando apre la stagione e come prenotare</h2>

@@ -21,9 +21,11 @@ def current(month, rid):
 
 
 class Monthly(unittest.TestCase):
-    def test_every_month_from_2022_01_to_2026_10_is_present(self):
-        expected = [f"{y}-{m:02d}" for y in range(2022, 2027) for m in range(1, 13)][:58]
-        self.assertEqual(sorted(MONTHLY), expected)
+    def test_months_are_contiguous_from_2022_01(self):
+        months = sorted(MONTHLY)
+        expected = [f"{y}-{m:02d}" for y in range(2022, 2100) for m in range(1, 13)][:len(months)]
+        self.assertEqual(months, expected)             # no gaps, starting January 2022
+        self.assertGreaterEqual(len(months), 58)       # at least up to October 2026
 
     def test_rows_sum_to_printed_totals_in_every_table(self):
         for month, d in MONTHLY.items():

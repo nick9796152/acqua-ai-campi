@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% from "macros.html" import fig, fig_url, meta, bar %}
 {% block content %}
-<p class="crumbs"><a href="/">Home</a> › Invasi</p>
+<p class="crumbs"><a href="{{ base }}/">Home</a> › Invasi</p>
 <h1>Invaso {{ r.name }}</h1>
 <p class="lead">{% if r.river %}Corso d'acqua: {{ r.river|title }}. {% endif %}Gestore: {{ r.manager or NA }}.</p>
 
@@ -63,14 +63,14 @@
 {% if links %}
 <ul class="plain">
 {% for l in links %}
-<li><a href="/consorzio/{{ l.consortium_id }}/">{{ consortia[l.consortium_id].name }}</a><br>
+<li><a href="{{ base }}/consorzio/{{ l.consortium_id }}/">{{ consortia[l.consortium_id].name }}</a><br>
 <span class="meta">{{ relations[l.relation] }}. {% if l.doc %}<a href="{{ src_url(l.doc, l.source_page) }}">fonte</a>{% endif %}</span></li>
 {% endfor %}
 </ul>
 {% if comuni_served %}
 <h3>Comuni dei consorzi collegati</h3>
 <p class="meta">Comuni nel comprensorio dei consorzi di distretto indicati sopra. Non tutti ricevono acqua da questo invaso.</p>
-<ul class="cols">{% for c, m in comuni_served %}<li><a href="/comune/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+<ul class="cols">{% for c, m in comuni_served %}<li><a href="{{ base }}/comune/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
 {% else %}
 <p class="na">{{ NA }}: non sappiamo ancora quali comuni dipendano da quest'invaso.</p>
 {% endif %}

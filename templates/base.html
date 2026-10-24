@@ -6,6 +6,7 @@
 <title>{{ title }}{% if title != "Acqua ai Campi" %} · Acqua ai Campi{% endif %}</title>
 {% if description %}<meta name="description" content="{{ description }}">{% endif %}
 <meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1C5 5 3 7.5 3 10a5 5 0 0010 0C13 7.5 11 5 8 1z' fill='%230b6e99'/%3E%3C/svg%3E">
 <style>
 :root{--bg:#fbfaf7;--fg:#1d2327;--muted:#53606a;--line:#d8d6cf;--card:#fff;--link:#0b5c82;--accent:#0b6e99;--bar:#0b6e99;--bar-bg:#e4e9ec;--warn-bg:#fff4d6;--warn-line:#c99a00;--ok:#1f6b3a}
@@ -62,15 +63,15 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padd
 <body>
 <a href="#main" class="meta" style="position:absolute;left:-999px" onfocus="this.style.left='8px'">Vai al contenuto</a>
 <header class="site"><div class="wrap">
-<a class="brand" href="/">Acqua ai Campi</a>
-<nav aria-label="Principale"><a href="/">Cerca il comune</a><a href="/fonti-e-metodo/">Fonti e metodo</a></nav>
+<a class="brand" href="{{ base }}/">Acqua ai Campi</a>
+<nav aria-label="Principale"><a href="{{ base }}/">Cerca il comune</a><a href="{{ base }}/fonti-e-metodo/">Fonti e metodo</a></nav>
 </div></header>
 <main id="main"><div class="wrap">
 {% block content %}{% endblock %}
 </div></main>
 <footer><div class="wrap">
 <p>Sito indipendente e gratuito, senza registrazione e senza tracciamento. Non è un sito istituzionale: i dati vengono dai documenti pubblicati dalla Regione Siciliana e dai consorzi di bonifica, con data e collegamento al documento originale accanto a ogni numero. In caso di dubbio vale il documento originale.</p>
-<p>Ultimi volumi degli invasi: {{ latest.doc_date|it_date }}. Pagina generata il {{ built_on|it_date }}. <a href="/fonti-e-metodo/">Fonti e metodo</a></p>
+<p>Ultimi volumi degli invasi: {{ latest.doc_date|it_date }}. Pagina generata il {{ built_on|it_date }}. <a href="{{ base }}/fonti-e-metodo/">Fonti e metodo</a></p>
 </div></footer>
 </body>
 </html>

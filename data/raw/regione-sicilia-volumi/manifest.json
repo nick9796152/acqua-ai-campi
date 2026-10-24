@@ -1,0 +1,350 @@
+{
+ "data/raw/regione-sicilia-volumi/2026-10-23_0__2024.06.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-06",
+  "sha256": "5d47e413aead4c7a8d60ca9701144a39c713d9dff4450bfbb28efafc2c05f284",
+  "url": "https://www.regione.sicilia.it/system/files/2024-06/0__2024.06.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1_2024.02.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-02",
+  "sha256": "beea681c771070b363743d2ba2e909d45444fbb58ed634fa4656ca1d4f6d490d",
+  "url": "https://www.regione.sicilia.it/system/files/2024-02/1_2024.02.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1_2026.03.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-03",
+  "sha256": "f2b21a18818f657d655e58dec3802d490aca5094f25c26bdd998f8d467dcbaf8",
+  "url": "https://www.regione.sicilia.it/system/files/2026-04/1_2026.03.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1_2026.04.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-04",
+  "sha256": "7f20965b6ecbab4d338b91f64b7b950b6b49a2d2c3e32b6ebb5162736ba5d613",
+  "url": "https://www.regione.sicilia.it/system/files/2026-04/1_2026.04.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1_2026.07.01_a_tabella_volumi_invasi_1.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-07",
+  "sha256": "2194d9e934c47826c976f773476618a0229c8f9c3bc212ae2710126118d61be4",
+  "url": "https://www.regione.sicilia.it/system/files/2026-07/1_2026.07.01_a_tabella_volumi_invasi_1.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1_2026.08.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-08",
+  "sha256": "58006b260d0136f21ac60f75169f92655d88ee844d4154c8a143a4a818e5ddb2",
+  "url": "https://www.regione.sicilia.it/system/files/2026-08/1_2026.08.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1_2026.09.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-09",
+  "sha256": "70b60cd28a308fb77bd97fbf9e23653a3eb25e3010caee7dc65f3e1bfdd98db6",
+  "url": "https://www.regione.sicilia.it/system/files/2026-09/1_2026.09.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.03.01_A_Tabella_volumi_invasi_0.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-03",
+  "sha256": "49df3daabddf4bf5ca86974668c22c081e4741b17cc7cb6b2402b21fb8d9d858",
+  "url": "https://www.regione.sicilia.it/system/files/2024-03/1__2024.03.01_A_Tabella_volumi_invasi_0.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.04.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-04",
+  "sha256": "adc094b4a87d4993746ae3e446fffd5c11fdd96688f2bf23b4df8a95739342de",
+  "url": "https://www.regione.sicilia.it/system/files/2024-04/1__2024.04.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.05.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-05",
+  "sha256": "e3706029dfd8255a7b19f32b36a8a1c8f7a142122ee7b6a61cf0ef44deb3676e",
+  "url": "https://www.regione.sicilia.it/system/files/2024-05/1__2024.05.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.07.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-07",
+  "sha256": "9f1deeabeb9e782bcaf407d6895255fcce20034c1a6616e477476495d9a89b5c",
+  "url": "https://www.regione.sicilia.it/system/files/2024-08/1__2024.07.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.08.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-08",
+  "sha256": "0b68c4306a259491146906c2ed4df39f0d380efbc25c2af72728197995b00d78",
+  "url": "https://www.regione.sicilia.it/system/files/2024-08/1__2024.08.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.09.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-09",
+  "sha256": "d08f23c83f47d6652409e2999f39cf350408f2a780597c4758eb061441678aca",
+  "url": "https://www.regione.sicilia.it/system/files/2024-09/1__2024.09.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.11.01_A_Tabella_volumi_invasi_0.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-11",
+  "sha256": "6059611cc94f9f5011020bc134cbfd2a671d7c499871d1b4c688dc3c516fd0e3",
+  "url": "https://www.regione.sicilia.it/system/files/2024-11/1__2024.11.01_A_Tabella_volumi_invasi_0.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2024.12.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-12",
+  "sha256": "deae4e5998d7748e8a7272f5e55f06a6b06f526a7b5e5733e15f218164d492a1",
+  "url": "https://www.regione.sicilia.it/system/files/2024-12/1__2024.12.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2025.01.01_A_Tabella_volumi_invasi_0.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-01",
+  "sha256": "a463179e781cd57ed5275b361f392ddd85dc9d2d647c7a4ccedcf5b4eccc74dd",
+  "url": "https://www.regione.sicilia.it/system/files/2025-01/1__2025.01.01_A_Tabella_volumi_invasi_0.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2025.06.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-06",
+  "sha256": "fd68b4559ae733922f689dfde5546eebb860f1022be2b923fb2c33b70dc6cad6",
+  "url": "https://www.regione.sicilia.it/system/files/2025-06/1__2025.06.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2025.07.01-A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-07",
+  "sha256": "7234109f3396df21318996530fe8593e3e7be3be98914a0a9a7b969dd4469dea",
+  "url": "https://www.regione.sicilia.it/system/files/2025-07/1__2025.07.01-A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2025.09.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-09",
+  "sha256": "0ef250cd77153e0df198f945488a7e547f9ea651aa77bddda53733064833dff9",
+  "url": "https://www.regione.sicilia.it/system/files/2025-09/1__2025.09.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_1__2025.11.01_A_Tabella_volumi_invasi_1.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-11",
+  "sha256": "6dfa4bfd7669fe7525d1b93bbe9fa00202eb21173c58599aed7ef04dd3d20958",
+  "url": "https://www.regione.sicilia.it/system/files/2025-11/1__2025.11.01_A_Tabella_volumi_invasi_1.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.03.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-03",
+  "sha256": "597ed060a403f5ce62d6e7bcfe2e290113840c19a3443a73cc3746eff9d2c8d4",
+  "url": "https://www.regione.sicilia.it/system/files/2023-03/2023.03.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.04.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-04",
+  "sha256": "1887ef939446d0a39a000bff3e369c157385a5e9ed96c828ad36a2891b3045f1",
+  "url": "https://www.regione.sicilia.it/system/files/2023-04/2023.04.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.05.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-05",
+  "sha256": "91f9eaf5ba334e0722a5e90be345cb2cdb0964ffc0d327d1200642b93d4f39e3",
+  "url": "https://www.regione.sicilia.it/system/files/2023-05/2023.05.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.06.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-06",
+  "sha256": "ae5217892c7829b3833369473f71eee986cd32becba87f12147fa601d44fcfb1",
+  "url": "https://www.regione.sicilia.it/system/files/2023-06/2023.06.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.07.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-07",
+  "sha256": "b0469ca1b5350ecba8b16517c57383caab46bfd590b258208e7aa32bdf23d8aa",
+  "url": "https://www.regione.sicilia.it/system/files/2023-07/2023.07.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.09.01_A_Tabella_volumi_invasi_0.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-09",
+  "sha256": "f78fffe4233fd3f0a9f0224cbd10eb25159538a43e56fde765e2e2f7fdb52dd4",
+  "url": "https://www.regione.sicilia.it/system/files/2023-09/2023.09.01_A_Tabella_volumi_invasi_0.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.10.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-10",
+  "sha256": "f9cabf33cd17df377fd73951f3f8f91e690df9fb2741e91f322b3b8f9f23a3f7",
+  "url": "https://www.regione.sicilia.it/system/files/2023-10/2023.10.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.11.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-11",
+  "sha256": "5e63b0555f32f2056fcdcb3aa8a8c88a5d10e3538237113572d280fa22aeeeb1",
+  "url": "https://www.regione.sicilia.it/system/files/2023-11/2023.11.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2023.12.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-12",
+  "sha256": "8a45db0cd10be8e3329d0272806d0417a0fd236e91099406a72e4bedfeacb04f",
+  "url": "https://www.regione.sicilia.it/system/files/2023-12/2023.12.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2024.01.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-01",
+  "sha256": "cffb8e07cbf4706de7669dd7835ef4e02abae5903537cea56e12cee1854d0852",
+  "url": "https://www.regione.sicilia.it/system/files/2024-01/2024.01.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2025.02.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-02",
+  "sha256": "027b74888f64ff27657fe06e0186b1eba2addd5f16664ad25f98e1b2658ca29f",
+  "url": "https://www.regione.sicilia.it/system/files/2025-02/2025.02.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2025.04.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-04",
+  "sha256": "8193a63b24c100ec9f93afd831852c935e2b95e3b1c149bd965048c4c08c67df",
+  "url": "https://www.regione.sicilia.it/system/files/2025-04/2025.04.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2025.05.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-05",
+  "sha256": "4acd40decf411ec68ac6fc841d31b984d66964686f2d11f4105190ae772836fd",
+  "url": "https://www.regione.sicilia.it/system/files/2025-05/2025.05.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2025.08.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-08",
+  "sha256": "d08eee4d669fdd21bfc858b02d98459c9b415173d04b53455912f1e9918a2efe",
+  "url": "https://www.regione.sicilia.it/system/files/2025-08/2025.08.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2025.10.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-10",
+  "sha256": "586dfc6e766aa0054e90dd394725bb3f11a1970cfaea6ba398e6e233d9d12d29",
+  "url": "https://www.regione.sicilia.it/system/files/2025-10/2025.10.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2025.12.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-12",
+  "sha256": "702fb355f81b6a00f806800a7547696dcca9bb56c6af14f3867a91c13d9832bf",
+  "url": "https://www.regione.sicilia.it/system/files/2025-12/2025.12.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2026.01.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-01",
+  "sha256": "e6d880c084559f0f997a0ba570bac5c60fac479f2f855c7c4bbdf9a843b6ae7e",
+  "url": "https://www.regione.sicilia.it/system/files/2026-01/2026.01.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2026.02.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-02",
+  "sha256": "c2d6d7690601a6f0c555a0830c64d6246bb167f0eca48f341da38777f090a68b",
+  "url": "https://www.regione.sicilia.it/system/files/2026-02/2026.02.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2026.06.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-06",
+  "sha256": "a075b1ecb658638b8effb41d220548ec7df5cf603186ec05f58dc1f46691482c",
+  "url": "https://www.regione.sicilia.it/system/files/2026-06/2026.06.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_2026.10.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-10",
+  "sha256": "c30e96c81991173eef120bc5d99d398da67e308ec757d244416e17298b35fcf0",
+  "url": "https://www.regione.sicilia.it/system/files/2026-10/2026.10.01_a_tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_PROSPETTO%20VOLUMI%20INVASATI%20NELLE%20DIGHE%20AGOSTO%202023.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-08",
+  "sha256": "2d281ce7f385c482eeccc9dd5698d7082fcd189e1ead09c9dc08b3611f9610eb",
+  "url": "https://www.regione.sicilia.it/system/files/2023-08/PROSPETTO%20VOLUMI%20INVASATI%20NELLE%20DIGHE%20AGOSTO%202023.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Agosto%202022.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-08",
+  "sha256": "d90b0ab00578b0913be2d09b92c418e679689f30aa74eb116da939c78e743d05",
+  "url": "https://www.regione.sicilia.it/system/files/2022-08/Prospetto%20volumi%20invasi%20Agosto%202022.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Dicembre%202022.pdf_0.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-12",
+  "sha256": "adb28bb7082ec5d461a9195d9011459792d2e977320615271787594d38d8d151",
+  "url": "https://www.regione.sicilia.it/system/files/2022-12/Prospetto%20volumi%20invasi%20Dicembre%202022.pdf_0.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Febbraio%202023.pdf.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-02",
+  "sha256": "528fc2281dde478971cb1c66b85321b4e73dec7404839f795c614240073eb523",
+  "url": "https://www.regione.sicilia.it/system/files/2023-02/Prospetto%20volumi%20invasi%20Febbraio%202023.pdf.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Gennaio%202023.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2023-01",
+  "sha256": "506bb76e984379063cf52032b8d3716f62ca2782b36ed1a6e16b31e508bce76a",
+  "url": "https://www.regione.sicilia.it/system/files/2023-01/Prospetto%20volumi%20invasi%20Gennaio%202023.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Giugno%202022.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-06",
+  "sha256": "248364375cd7a539e4abfcc7e59d6fcb744e7632d13bd86fdc4ca580f2834b4d",
+  "url": "https://www.regione.sicilia.it/system/files/2022-06/Prospetto%20volumi%20invasi%20Giugno%202022.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Luglio%202022.pdf.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-07",
+  "sha256": "7fee6a1c6d4b8fecee18f783bbd10d30664388bec14bf36d989f9739fcad5200",
+  "url": "https://www.regione.sicilia.it/system/files/2022-07/Prospetto%20volumi%20invasi%20Luglio%202022.pdf.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Novembre%202022.pdf.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-11",
+  "sha256": "78b6fef141d79d4e7a19b13bddc08c62a6a2aeaab298c97915ccb1f663f23b58",
+  "url": "https://www.regione.sicilia.it/system/files/2022-11/Prospetto%20volumi%20invasi%20Novembre%202022.pdf.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Ottobre%202022.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-10",
+  "sha256": "4282b4dc6bc0946bb09d228a33ee6fe0fb91c6f63594a3514bed39460e3c2ee8",
+  "url": "https://www.regione.sicilia.it/system/files/2022-10/Prospetto%20volumi%20invasi%20Ottobre%202022.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Prospetto%20volumi%20invasi%20Settembre%202022.pdf.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-09",
+  "sha256": "747dd1172b1f3ccde37df3a85e5a04fe989a328776d60e3972d2ce7b9c5d1dc0",
+  "url": "https://www.regione.sicilia.it/system/files/2022-09/Prospetto%20volumi%20invasi%20Settembre%202022.pdf.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2024-10",
+  "sha256": "95b7e55c4506fcaf023ec7af1ccc80a9dae6c3d79145f0528ff6b8c2be11cce9",
+  "url": "https://www.regione.sicilia.it/system/files/2024-10/Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23__2025.03.01_A_Tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2025-03",
+  "sha256": "32b8e3b80324ad3a86dd03c8ae7aa869f18b4af7b838c92b0dd1dee9030ea4e9",
+  "url": "https://www.regione.sicilia.it/system/files/2025-03/_2025.03.01_A_Tabella_volumi_invasi.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_inv_2022-01_corretto%20Anno%202022.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-01",
+  "sha256": "76221197ace198ad101b40e3c271d1e87e5e7a0ae90351dd0170564c008472f2",
+  "url": "https://www.regione.sicilia.it/system/files/2022-01/inv_2022-01_corretto%20Anno%202022.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_inv_2022-02.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-02",
+  "sha256": "35c445ad47574a2d884e5f50e4495d7b1836c273abd435c21adc57bb51d256af",
+  "url": "https://www.regione.sicilia.it/system/files/2022-02/inv_2022-02.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_inv_2022-03.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-03",
+  "sha256": "b132aa3a5ba160a4b84486add6ff718280abb2b9f9e0a08042620a1777e49a0a",
+  "url": "https://www.regione.sicilia.it/system/files/2022-03/inv_2022-03.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_inv_2022-04.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-04",
+  "sha256": "951772d5cfcedf93a331515a57ffbc3b93e641c105f876050b578f360550fa9f",
+  "url": "https://www.regione.sicilia.it/system/files/2022-04/inv_2022-04.pdf"
+ },
+ "data/raw/regione-sicilia-volumi/2026-10-23_inv_2022-05.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2022-05",
+  "sha256": "462f739c52587cd837ca271f722ec3d8cee43af95224171cc721f9dd9cdf99b9",
+  "url": "https://www.regione.sicilia.it/system/files/2022-05/inv_2022-05.pdf"
+ },
+ "data/raw/regione-sicilia/2026-10-23_2_2026.05.01_a_tabella_volumi_invasi.pdf": {
+  "first_seen": "2026-10-23",
+  "month": "2026-05",
+  "sha256": "011bfd36ac75dfb704ab506c05b5d4e2cea0f4d9a6c621098038de0146ffde18",
+  "url": "https://www.regione.sicilia.it/system/files/2026-05/2_2026.05.01_a_tabella_volumi_invasi.pdf"
+ }
+}

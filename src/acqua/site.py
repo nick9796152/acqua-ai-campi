@@ -1,4 +1,4 @@
-"""Static site generator.  Usage:  python -m acqua.site [--db data/acqua.sqlite] [--out site]
+"""Static site generator.  Usage:  python -m acqua.site [--db data/acqua.sqlite] [--out site] [--base /sub-folder]
 
 Pages: home, /comune/<slug>/, /invaso/<slug>/, /consorzio/<id>/, /fonti-e-metodo/.
 All text is Italian. Every figure is rendered through the `fig`/`src` macros in templates/macros.html,
@@ -6,6 +6,7 @@ which always print the date of the source data and a link to the source document
 """
 import argparse
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -113,7 +114,9 @@ def mapping_source(m):
     raise KeyError(f"no public URL known for mapping source {name}")
 
 
-def build(db, out):
+def build(db, out, base=""):
+    """base: path prefix when the site is not at the root of its address, e.g. '/acqua-ai-campi'."""
+    base = "/" + base.strip("/") if base.strip("/") else ""
     d = sitedata.load(db)
     out = Path(out)
     out.mkdir(parents=True, exist_ok=True)
@@ -122,7 +125,7 @@ def build(db, out):
     env = Environment(loader=FileSystemLoader(TEMPLATES), autoescape=select_autoescape(["html"]),
                       trim_blocks=True, lstrip_blocks=True)
     env.filters.update(ha=lambda n: f"{n:,}".replace(",", "."), vol=vol, it_date=it_date, pct=fmt_pct, spct=signed_pct)
-    env.globals.update(src_url=src_url, src_label=src_label, NA=NA, USES=USES)
+    env.globals.update(base=base, src_url=src_url, src_label=src_label, NA=NA, USES=USES)
 
     for c in d["consortia"].values():
         doc = d["docs"].get((c["contact_source_file"] or "").replace("\\", "/").split("/")[-1])
@@ -181,7 +184,7 @@ def build(db, out):
             comuni_by_cons.setdefault(m["consortium_id"], []).append((c, m))
 
     # ---- pages ---------------------------------------------------------------------------
-    index = [[c["name"], c["province"], f"/comune/{c['slug']}/"] for c in comuni]
+    index = [[c["name"], c["province"], f"{base}/comune/{c['slug']}/"] for c in comuni]
     provinces = {}
     for c in comuni:
         provinces.setdefault(c["province"], []).append(c)
@@ -255,8 +258,10 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--db", default=str(ROOT / "data" / "acqua.sqlite"))
     ap.add_argument("--out", default=str(ROOT / "site"))
+    ap.add_argument("--base", default=os.environ.get("ACQUA_BASE", ""),
+                    help="path prefix if the site lives in a sub-folder of its address (or env ACQUA_BASE)")
     a = ap.parse_args(argv)
-    out = build(a.db, a.out)
+    out = build(a.db, a.out, a.base)
     print(f"site written to {out} ({sum(1 for _ in out.rglob('*.html'))} pages)")
     return 0
 

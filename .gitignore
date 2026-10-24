@@ -3,5 +3,4 @@ __pycache__/
 site/
 deploy-state/
 data/acqua.sqlite
-data/raw/
 .venv/

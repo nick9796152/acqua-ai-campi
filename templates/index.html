@@ -34,7 +34,7 @@ m.forEach(function(c){var l=document.createElement('li'),a=document.createElemen
 <tbody>
 {% for r in reservoirs if r.now %}
 <tr class="datarow">
-<th scope="row" style="font-weight:400"><a href="/invaso/{{ r.slug }}/">{{ r.name }}</a><br>{{ meta(latest.doc_date|it_date, latest, r.now.source_page) }}</th>
+<th scope="row" style="font-weight:400"><a href="{{ base }}/invaso/{{ r.slug }}/">{{ r.name }}</a><br>{{ meta(latest.doc_date|it_date, latest, r.now.source_page) }}</th>
 <td class="n">{{ r.now.stored_m3|vol }}</td>
 <td class="hide-sm">{{ bar(r.pct_full, r.over_capacity) }}<span class="meta">{% if r.over_capacity %}supera la capacità indicata{% else %}{{ r.pct_full|pct }}{% endif %}</span></td>
 <td class="n">{{ r.last_year.stored_m3|vol if r.last_year else NA }}</td>
@@ -47,15 +47,15 @@ m.forEach(function(c){var l=document.createElement('li'),a=document.createElemen
 <p>Sono gli enti che distribuiscono l'acqua alle aziende agricole.</p>
 <ul class="plain">
 {% for c in consortia.values() if not c.parent_id %}
-<li><a href="/consorzio/{{ c.id }}/">{{ c.name }}</a>
-<ul class="plain">{% for k in consortia.values() if k.parent_id == c.id %}<li><a href="/consorzio/{{ k.id }}/">{{ k.name }}</a></li>{% endfor %}</ul></li>
+<li><a href="{{ base }}/consorzio/{{ c.id }}/">{{ c.name }}</a>
+<ul class="plain">{% for k in consortia.values() if k.parent_id == c.id %}<li><a href="{{ base }}/consorzio/{{ k.id }}/">{{ k.name }}</a></li>{% endfor %}</ul></li>
 {% endfor %}
 </ul>
 
 <h2>Elenco dei comuni</h2>
 {% for prov, lst in provinces.items() %}
 <details><summary>{{ prov }} ({{ lst|length }} comuni)</summary>
-<ul class="cols">{% for c in lst %}<li><a href="/comune/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+<ul class="cols">{% for c in lst %}<li><a href="{{ base }}/comune/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
 </details>
 {% endfor %}
 {% endblock %}

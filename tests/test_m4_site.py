@@ -144,6 +144,27 @@ class Sources(unittest.TestCase):
                 self.assertRegex(html, r"Apertura della stagione irrigua:</strong> <span class=\"na\">Dato non disponibile")
 
 
+class SubFolderHosting(unittest.TestCase):
+    """GitHub Pages serves a project site under /<repository>/, so every link needs that prefix."""
+
+    def test_site_built_with_a_base_path_has_working_links(self):
+        from acqua import checks
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "acqua-ai-campi"
+            site.build(str(DB), out, base="/acqua-ai-campi")
+            self.assertEqual(checks.site_problems(out, base="/acqua-ai-campi"), [])
+            home = (out / "index.html").read_text(encoding="utf-8")
+            self.assertIn('href="/acqua-ai-campi/fonti-e-metodo/"', home)
+            self.assertIn('"/acqua-ai-campi/comune/ribera/"', home)          # search index
+            self.assertNotRegex(home, r'href="/(?!acqua-ai-campi)')
+            # the same files do not work if the prefix is wrong
+            self.assertNotEqual(checks.site_problems(out, base="/altro"), [])
+
+    def test_root_build_has_working_links_too(self):
+        from acqua import checks
+        self.assertEqual(checks.site_problems(OUT), [])
+
+
 class OverCapacity(unittest.TestCase):
     def test_value_above_capacity_is_shown_and_flagged(self):
         import shutil

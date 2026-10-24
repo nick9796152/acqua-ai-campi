@@ -1,0 +1,110 @@
+name: Update site
+
+# Every day: look for new government documents, rebuild the site only if there are some
+# (or if the code changed), and replace the live pages only if every check passes.
+# If anything fails, the live site stays as it was and GitHub emails the repository owner.
+on:
+  schedule:
+    - cron: "30 5 * * *"       # 05:30 UTC every day
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: update-site
+  cancel-in-progress: false
+
+permissions:
+  contents: write              # to save newly downloaded documents back to the repository
+
+env:
+  PYTHONPATH: src
+  PYTHONIOENCODING: utf-8
+  ACQUA_BASE: /${{ github.event.repository.name }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      publish: ${{ steps.decide.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Download new reservoir tables
+        run: python -m acqua.fetch --from-year $(( $(date +%Y) - 1 ))
+
+      - name: Decide whether to publish
+        id: decide
+        run: |
+          if [ "${{ github.event_name }}" != "schedule" ] || [ -n "$(git status --porcelain data/raw)" ]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "Nothing new today."
+          fi
+
+      - name: Read and validate all documents
+        if: steps.decide.outputs.publish == 'true'
+        run: python -m acqua.pipeline
+
+      - name: Build the site
+        if: steps.decide.outputs.publish == 'true'
+        run: python -m acqua.site
+
+      - name: Check the site
+        if: steps.decide.outputs.publish == 'true'
+        run: python -m acqua.checks site --base "$ACQUA_BASE"
+
+      - name: Save new documents in the repository
+        if: steps.decide.outputs.publish == 'true'
+        run: |
+          git config user.name "acqua-bot"
+          git config user.email "acqua-bot@users.noreply.github.com"
+          git add data/raw
+          if ! git diff --cached --quiet; then
+            git commit -m "Archive new source documents"
+            git pull --rebase
+            git push
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        if: steps.decide.outputs.publish == 'true'
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: needs.build.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+  freshness:
+    # Mondays (and manual runs): warn by email if the Authority has not published a new table for 45 days.
+    needs: build
+    if: always() && needs.build.result == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: |
+          if [ "$(date +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            python -m acqua.checks fresh
+          fi
