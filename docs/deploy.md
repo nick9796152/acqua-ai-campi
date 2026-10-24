@@ -17,7 +17,7 @@ git init
 git add .
 git commit -m "Acqua ai Campi M1-M5"
 git branch -M main
-git remote add origin https://codeberg.org/<your-user>/acqua-ai-campi.git
+git remote add origin https://codeberg.org/nickscotto/acqua-ai-campi.git
 git push -u origin main
 ```
 
@@ -28,7 +28,7 @@ Create the (empty) repository on codeberg.org first. `.gitignore` keeps out the 
 On the server:
 
 ```bash
-git clone https://codeberg.org/<your-user>/acqua-ai-campi.git /tmp/acqua && sh /tmp/acqua/deploy/bootstrap.sh https://codeberg.org/<your-user>/acqua-ai-campi.git
+git clone https://codeberg.org/nickscotto/acqua-ai-campi.git /tmp/acqua && sh /tmp/acqua/deploy/bootstrap.sh https://codeberg.org/nickscotto/acqua-ai-campi.git
 ```
 
 The script installs Caddy, Python and git, creates the `acqua` user, clones the code to `/srv/acqua/app`, builds the Python environment, installs the systemd units, **runs the update-job tests on the server** (this is the first real test of the atomic site switch) and enables the daily timer. If a step fails it stops; read the message.
