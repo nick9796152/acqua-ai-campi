@@ -44,7 +44,8 @@ jobs:
       - name: Decide whether to publish
         id: decide
         run: |
-          if [ "${{ github.event_name }}" != "schedule" ] || [ -n "$(git status --porcelain data/raw)" ]; then
+          git add -A data/raw      # stages only real content changes (identical files stay unchanged)
+          if [ "${{ github.event_name }}" != "schedule" ] || ! git diff --cached --quiet; then
             echo "publish=true" >> "$GITHUB_OUTPUT"
           else
             echo "publish=false" >> "$GITHUB_OUTPUT"
