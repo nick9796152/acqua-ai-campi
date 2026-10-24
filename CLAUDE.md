@@ -7,5 +7,5 @@ Project spec: see [BRIEF.md](BRIEF.md). Follow its principles (§3) and mileston
 - Every figure on the site must carry a date and a source link; `tests/test_m4_site.py` enforces it. Never put tokens in the repo.
 - `data/reference/*.csv` is hand-checked reference data; every row names its source file and page.
 - Never invent numbers; every figure carries source, date and page.
-- Italian-only UI text. Do not use GitHub, GitHub Actions or Azure.
+- Italian-only UI text. Nick avoids paying Microsoft (no Azure, no paid GitHub plans), but said free GitHub (Pages, Actions) is fine.
 - Raw downloads go in `data/raw/{source}/{YYYY-MM-DD}_{filename}`.
