@@ -39,7 +39,7 @@
 <h2>Comuni del comprensorio</h2>
 {% if comuni_list %}
 <p class="meta">{{ comuni_list|length }} comuni ({{ comuni_list[0][1].label }} {{ comuni_list[0][1].date_text }} · <a href="{{ comuni_list[0][1].url }}">fonte</a>). Dove è indicato, gli ettari sono la parte del comune compresa nel comprensorio.</p>
-<ul class="cols">{% for cm, m in comuni_list %}<li><a href="/comune/{{ cm.slug }}/">{{ cm.name }}</a>{% if m.area_ha_in_comprensorio %} <span class="meta">{{ m.area_ha_in_comprensorio }} ha</span>{% endif %}</li>{% endfor %}</ul>
+<ul class="cols">{% for cm, m in comuni_list %}<li><a href="/comune/{{ cm.slug }}/">{{ cm.name }}</a>{% if m.area_ha_in_comprensorio %} <span class="meta">{{ m.area_ha_in_comprensorio|int|ha }} ha</span>{% endif %}</li>{% endfor %}</ul>
 {% else %}
 <p class="na">{{ NA }}: non abbiamo ancora l'elenco dei comuni di questo consorzio.</p>
 {% endif %}

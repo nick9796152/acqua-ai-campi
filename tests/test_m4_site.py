@@ -182,7 +182,7 @@ class KeyInformationWithoutJs(unittest.TestCase):
 
     def test_catania_comune_shows_hectares_and_pozzillo(self):
         h = PAGES["comune/catania/index.html"]
-        self.assertIn("10378 ettari", h)
+        self.assertIn("10.378 ettari", h)
         self.assertIn("Invaso Pozzillo", h)
         self.assertIn("47,14 milioni di m³", h)           # planned 2026, Prot. 10706
 

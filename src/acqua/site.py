@@ -121,7 +121,7 @@ def build(db, out):
         shutil.rmtree(child) if child.is_dir() else child.unlink()
     env = Environment(loader=FileSystemLoader(TEMPLATES), autoescape=select_autoescape(["html"]),
                       trim_blocks=True, lstrip_blocks=True)
-    env.filters.update(vol=vol, it_date=it_date, pct=fmt_pct, spct=signed_pct)
+    env.filters.update(ha=lambda n: f"{n:,}".replace(",", "."), vol=vol, it_date=it_date, pct=fmt_pct, spct=signed_pct)
     env.globals.update(src_url=src_url, src_label=src_label, NA=NA, USES=USES)
 
     for c in d["consortia"].values():

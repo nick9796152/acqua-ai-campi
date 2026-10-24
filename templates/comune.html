@@ -17,7 +17,7 @@ Puoi vedere i <a href="/">volumi di tutti gli invasi</a> e rivolgerti al consorz
 <p class="big"><a href="/consorzio/{{ k.c.id }}/">{{ k.c.name }}</a></p>
 {% if k.parent %}<p>Fa parte del <a href="/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a>.</p>{% endif %}
 <p><strong>Il comune è nel comprensorio del consorzio</strong> <small class="meta">({{ k.m.label }} {{ k.m.date_text }} · <a href="{{ k.m.url }}">fonte</a>).</small>
-{% if k.m.area_ha_in_comprensorio %}Del territorio di {{ cm.name }} ricadono nel comprensorio <strong>{{ k.m.area_ha_in_comprensorio }} ettari</strong> (non tutto il comune).{% elif k.m.zone %}È stato aggiunto al comprensorio ({{ k.m.zone }}); l'estensione non è indicata.{% else %}L'elenco non dice quanta parte del comune è compresa.{% endif %}
+{% if k.m.area_ha_in_comprensorio %}Del territorio di {{ cm.name }} ricadono nel comprensorio <strong>{{ k.m.area_ha_in_comprensorio|int|ha }} ettari</strong> (non tutto il comune). {% elif k.m.zone %}È stato aggiunto al comprensorio ({{ k.m.zone }}); l'estensione non è indicata.{% else %}L'elenco non dice quanta parte del comune è compresa.{% endif %}
 Essere nell'elenco non significa che l'acqua arrivi a ogni azienda.</p>
 </div>
 
