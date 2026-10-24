@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% from "macros.html" import fig, fig_url, meta, bar %}
+{% block content %}
+<p class="crumbs"><a href="/">Home</a> › {{ cm.province }}</p>
+<h1>{{ cm.name }}</h1>
+<p class="lead">Acqua per l'irrigazione · provincia di {{ cm.province }}</p>
+
+{% if not cons %}
+<div class="warn"><strong>Per questo comune non abbiamo ancora il consorzio di bonifica.</strong>
+Non esiste un elenco pubblico dei comuni per ogni consorzio, e finora abbiamo trovato solo quello di due consorzi. Non vogliamo indovinare: <span class="na">{{ NA }}</span>.
+Puoi vedere i <a href="/">volumi di tutti gli invasi</a> e rivolgerti al consorzio della tua zona.</div>
+{% endif %}
+
+{% for k in cons %}
+<h2>Consorzio di bonifica</h2>
+<div class="card">
+<p class="big"><a href="/consorzio/{{ k.c.id }}/">{{ k.c.name }}</a></p>
+{% if k.parent %}<p>Fa parte del <a href="/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a>.</p>{% endif %}
+<p><strong>Il comune è nel comprensorio del consorzio</strong> <small class="meta">({{ k.m.label }} {{ k.m.date_text }} · <a href="{{ k.m.url }}">fonte</a>).</small>
+{% if k.m.area_ha_in_comprensorio %}Del territorio di {{ cm.name }} ricadono nel comprensorio <strong>{{ k.m.area_ha_in_comprensorio }} ettari</strong> (non tutto il comune).{% elif k.m.zone %}È stato aggiunto al comprensorio ({{ k.m.zone }}); l'estensione non è indicata.{% else %}L'elenco non dice quanta parte del comune è compresa.{% endif %}
+Essere nell'elenco non significa che l'acqua arrivi a ogni azienda.</p>
+</div>
+
+<h2>Dove prende l'acqua</h2>
+{% if k.direct %}
+{% for r in k.direct %}
+<div class="card">
+<h3><a href="/invaso/{{ r.slug }}/">Invaso {{ r.name }}</a></h3>
+{% if r.now %}
+<p class="big">{{ fig(r.now.stored_m3|vol, latest.doc_date|it_date, latest, r.now.source_page) }}</p>
+<p>Lo stesso mese dell'anno scorso: {% if r.last_year %}{{ fig(r.last_year.stored_m3|vol, latest.doc_date|it_date, latest, r.last_year.source_page, label="nel prospetto del") }}{% else %}<span class="na">{{ NA }}</span>{% endif %}.
+{% if r.over_capacity %}<br><span class="meta">Il dato stampato supera la capacità indicata nello stesso prospetto.</span>{% endif %}</p>
+{% endif %}
+{% for p in plans[r.id] %}
+<p><strong>Piano di irrigazione {{ p.season_year }}:</strong>
+{% if p.planned_m3 is not none %}{{ fig(p.planned_m3|vol, p.as_of_date|it_date, p.doc, p.source_page, label="dati al") }}{% else %}<span class="na">{{ NA }}</span>{% endif %}
+{% if p.needs_m3 is not none %} su {{ fig(p.needs_m3|vol, p.as_of_date|it_date, p.doc, p.source_page, label="dati al") }} richiesti dagli utilizzatori{% endif %}.
+{% if p.notes %}<span class="meta">{{ p.notes }}</span>{% endif %}</p>
+{% else %}
+<p><strong>Piano di irrigazione 2026:</strong> <span class="na">{{ NA }}</span></p>
+{% endfor %}
+</div>
+{% endfor %}
+{% if k.regional_n %}<p>Il {{ (k.parent or k.c).name }} usa anche altri {{ k.regional_n }} invasi; per molti non sappiamo quale distretto servano. <a href="/consorzio/{{ (k.parent or k.c).id }}/">Vedi l'elenco</a>.</p>{% endif %}
+{% else %}
+<p class="na">{{ NA }}: per questo consorzio nessun documento collega un invaso al distretto del comune.</p>
+{% if k.parent %}<p>Vedi gli invasi del <a href="/consorzio/{{ k.parent.id }}/">{{ k.parent.name }}</a> e il <a href="/">quadro di tutta la Sicilia</a>.</p>{% endif %}
+{% endif %}
+
+<h2>Quando apre la stagione e come prenotare</h2>
+<div class="card">
+<p><strong>Apertura della stagione irrigua:</strong> <span class="na">{{ NA }}</span></p>
+<p><strong>Prenotazioni e tariffe:</strong> <span class="na">{{ NA }}</span></p>
+<p class="meta">Non abbiamo trovato un avviso ufficiale del consorzio. Le notizie di giornale non bastano come fonte. Chiedi direttamente al consorzio.</p>
+{% if k.c.contact %}<p><strong>Contatto:</strong> PEC <a href="mailto:{{ k.c.contact }}">{{ k.c.contact }}</a><br>{{ meta(k.c.contact_date|it_date, k.c.contact_doc, k.c.contact_source_page, label="indirizzo da un documento del") }}</p>
+{% else %}<p><strong>Contatto:</strong> <span class="na">{{ NA }}</span></p>{% endif %}
+</div>
+{% endfor %}
+{% endblock %}

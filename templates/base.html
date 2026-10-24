@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ title }}{% if title != "Acqua ai Campi" %} · Acqua ai Campi{% endif %}</title>
+{% if description %}<meta name="description" content="{{ description }}">{% endif %}
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1C5 5 3 7.5 3 10a5 5 0 0010 0C13 7.5 11 5 8 1z' fill='%230b6e99'/%3E%3C/svg%3E">
+<style>
+:root{--bg:#fbfaf7;--fg:#1d2327;--muted:#53606a;--line:#d8d6cf;--card:#fff;--link:#0b5c82;--accent:#0b6e99;--bar:#0b6e99;--bar-bg:#e4e9ec;--warn-bg:#fff4d6;--warn-line:#c99a00;--ok:#1f6b3a}
+@media (prefers-color-scheme:dark){:root{--bg:#14181b;--fg:#e8ebed;--muted:#a3afb7;--line:#33403f;--card:#1b2124;--link:#7cc4e8;--accent:#5fb3dc;--bar:#5fb3dc;--bar-bg:#2b3438;--warn-bg:#3a3213;--warn-line:#c99a00;--ok:#7ccf98}}
+*{box-sizing:border-box}
+html{font-size:112.5%;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+a{color:var(--link);text-underline-offset:.15em}
+a:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.wrap{max-width:46rem;margin:0 auto;padding:0 16px}
+header.site{border-bottom:1px solid var(--line);background:var(--card)}
+header.site .wrap{display:flex;gap:1rem;align-items:baseline;justify-content:space-between;flex-wrap:wrap;padding-top:.7rem;padding-bottom:.7rem}
+.brand{font-weight:700;font-size:1.1rem;text-decoration:none;color:var(--fg)}
+nav{display:flex;gap:1rem;flex-wrap:wrap}
+main{padding:1.2rem 0 2.5rem}
+h1{font-size:1.75rem;line-height:1.2;margin:.2rem 0 .6rem}
+h2{font-size:1.3rem;margin:2rem 0 .6rem}
+h3{font-size:1.1rem;margin:1.2rem 0 .3rem}
+.lead{font-size:1.1rem;color:var(--muted);margin:.2rem 0 1rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:1rem;margin:.9rem 0}
+.big{font-size:1.6rem;line-height:1.25}
+.meta{color:var(--muted);font-size:.8rem}
+.fig strong{font-variant-numeric:tabular-nums}
+.warn{background:var(--warn-bg);border-left:5px solid var(--warn-line);padding:.7rem .9rem;border-radius:4px;margin:.9rem 0}
+.na{color:var(--muted);font-style:italic}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:.55rem .4rem;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:.8rem;color:var(--muted);font-weight:600}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+.bar{display:block;height:.7rem;background:var(--bar-bg);border-radius:4px;overflow:hidden;min-width:4rem}
+.bar span{display:block;height:100%;background:var(--bar)}
+.bar.over span{background:var(--warn-line)}
+.search label{display:block;font-weight:600;margin-bottom:.3rem}
+.search input{width:100%;font:inherit;padding:.7rem .8rem;border:2px solid var(--line);border-radius:8px;background:var(--card);color:var(--fg)}
+#res{list-style:none;margin:.4rem 0 0;padding:0}
+#res a{display:block;padding:.6rem .4rem;border-bottom:1px solid var(--line);font-size:1.05rem}
+.chart{width:100%;height:auto;display:block}
+.chart .line{fill:none;stroke:var(--accent);stroke-width:2.2}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .cap{stroke:var(--warn-line);stroke-width:1.5;stroke-dasharray:5 4}
+.chart .dot{fill:var(--accent)}
+.chart .ax{fill:var(--muted);font-size:11px}
+details{margin:.8rem 0}
+summary{cursor:pointer;font-weight:600;padding:.3rem 0}
+.cols{columns:2 14rem;column-gap:1.5rem;padding-left:1.1rem;margin:.4rem 0}
+.cols li{break-inside:avoid;padding:.12rem 0}
+ul.plain{list-style:none;padding:0;margin:.4rem 0}
+ul.plain li{padding:.45rem 0;border-bottom:1px solid var(--line)}
+footer{border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;padding:1.2rem 0 2rem}
+.crumbs{font-size:.85rem;color:var(--muted);margin:0 0 .4rem}
+@media (max-width:30rem){.hide-sm{display:none}}
+</style>
+</head>
+<body>
+<a href="#main" class="meta" style="position:absolute;left:-999px" onfocus="this.style.left='8px'">Vai al contenuto</a>
+<header class="site"><div class="wrap">
+<a class="brand" href="/">Acqua ai Campi</a>
+<nav aria-label="Principale"><a href="/">Cerca il comune</a><a href="/fonti-e-metodo/">Fonti e metodo</a></nav>
+</div></header>
+<main id="main"><div class="wrap">
+{% block content %}{% endblock %}
+</div></main>
+<footer><div class="wrap">
+<p>Sito indipendente e gratuito, senza registrazione e senza tracciamento. Non è un sito istituzionale: i dati vengono dai documenti pubblicati dalla Regione Siciliana e dai consorzi di bonifica, con data e collegamento al documento originale accanto a ogni numero. In caso di dubbio vale il documento originale.</p>
+<p>Ultimi volumi degli invasi: {{ latest.doc_date|it_date }}. Pagina generata il {{ built_on|it_date }}. <a href="/fonti-e-metodo/">Fonti e metodo</a></p>
+</div></footer>
+</body>
+</html>

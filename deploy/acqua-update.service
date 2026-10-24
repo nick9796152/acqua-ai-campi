@@ -1,0 +1,26 @@
+[Unit]
+Description=Acqua ai Campi: fetch, validate, build and publish the site
+After=network-online.target
+Wants=network-online.target
+# Exit code 3 means "failed safely, alert already sent" and counts as success here.
+# Any other failure (crash, missing venv, out of disk) triggers the fallback alert.
+OnFailure=acqua-alert.service
+
+[Service]
+Type=oneshot
+User=acqua
+Group=acqua
+WorkingDirectory=/srv/acqua/app
+EnvironmentFile=/etc/acqua.env
+Environment=PYTHONPATH=/srv/acqua/app/src PYTHONIOENCODING=utf-8
+# Pick up new code; a failed pull is not fatal (the leading '-').
+ExecStartPre=-/usr/bin/git -C /srv/acqua/app pull --ff-only
+ExecStart=/srv/acqua/venv/bin/python -m acqua.update --root /srv/acqua/state
+SuccessExitStatus=3
+TimeoutStartSec=30min
+Nice=10
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/acqua

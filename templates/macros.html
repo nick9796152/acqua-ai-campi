@@ -1,0 +1,16 @@
+{# A figure always carries its date and a link to the source document. #}
+{% macro fig(text, date, doc, page=None, label="aggiornato al") -%}
+<span class="fig"><strong>{{ text }}</strong> <small class="meta">{{ label }} {{ date }} · <a href="{{ src_url(doc, page) }}">fonte</a></small></span>
+{%- endmacro %}
+
+{% macro fig_url(text, date, url, label="aggiornato al") -%}
+<span class="fig"><strong>{{ text }}</strong> <small class="meta">{{ label }} {{ date }} · <a href="{{ url }}">fonte</a></small></span>
+{%- endmacro %}
+
+{% macro meta(date, doc, page=None, label="aggiornato al") -%}
+<small class="meta">{{ label }} {{ date }} · <a href="{{ src_url(doc, page) }}">fonte</a></small>
+{%- endmacro %}
+
+{% macro bar(share, over=False) -%}
+<span class="bar{{ ' over' if over }}" role="img" aria-label="{{ 'Supera la capacità indicata' if over else share|pct ~ ' pieno' }}"><span style="width:{{ [share or 0, 100]|min|round|int }}%"></span></span>
+{%- endmacro %}

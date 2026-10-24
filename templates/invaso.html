@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% from "macros.html" import fig, fig_url, meta, bar %}
+{% block content %}
+<p class="crumbs"><a href="/">Home</a> › Invasi</p>
+<h1>Invaso {{ r.name }}</h1>
+<p class="lead">{% if r.river %}Corso d'acqua: {{ r.river|title }}. {% endif %}Gestore: {{ r.manager or NA }}.</p>
+
+{% if r.now %}
+<div class="card">
+<p class="big">{{ fig(r.now.stored_m3|vol, latest.doc_date|it_date, latest, r.now.source_page) }}</p>
+<p>Capacità dell'invaso: {{ fig(r.capacity_m3|vol, latest.doc_date|it_date, latest, r.now.source_page) }}.</p>
+{% if r.over_capacity %}
+<div class="warn">Il valore stampato è <strong>più alto</strong> della capacità indicata nello stesso prospetto. Lo riportiamo com'è.</div>
+{% else %}
+<p>{{ bar(r.pct_full) }} <span class="meta">{{ r.pct_full|pct }} della capacità</span></p>
+{% endif %}
+<table>
+<thead><tr><th scope="col">Confronto</th><th scope="col" class="n">Volume</th></tr></thead>
+<tbody>
+<tr class="datarow"><th scope="row" style="font-weight:400">Un anno fa<br>{{ meta(latest.doc_date|it_date, latest, r.last_year.source_page if r.last_year else None, label="nel prospetto del") }}</th><td class="n">{{ r.last_year.stored_m3|vol if r.last_year else NA }}{% if r.change_year is not none %}<br><span class="meta">oggi {{ r.change_year|spct }}</span>{% endif %}</td></tr>
+<tr class="datarow"><th scope="row" style="font-weight:400">Mese scorso<br>{{ meta(latest.doc_date|it_date, latest, r.prev.source_page if r.prev else None, label="nel prospetto del") }}</th><td class="n">{{ r.prev.stored_m3|vol if r.prev else NA }}</td></tr>
+</tbody></table>
+<p class="meta">Volume invasato al lordo, come nel prospetto della Regione. Non tutta quest'acqua è utilizzabile: vedi il «volume utile» nel piano più sotto.</p>
+</div>
+{% else %}
+<p class="na">{{ NA }}: questo invaso non compare nell'ultimo prospetto.</p>
+{% endif %}
+
+{% if chart %}
+<h2>Il volume nel tempo</h2>
+<figure style="margin:0">{{ chart|safe }}
+<figcaption class="meta">Volume invasato (milioni di m³) a inizio mese, da gennaio 2022. La linea tratteggiata è la capacità indicata. Dati dei prospetti mensili della Regione; l'ultimo punto è del {{ latest.doc_date|it_date }}.</figcaption></figure>
+<details><summary>Mostra i numeri del grafico</summary>
+<table><thead><tr><th scope="col">Data</th><th scope="col" class="n">Volume</th></tr></thead><tbody>
+{% for p in r.series|reverse %}<tr class="datarow"><td>{{ p.as_of_date|it_date }} <small class="meta">· <a href="{{ src_url(docs_by_key[p.source_file], p.source_page) }}">fonte</a></small></td><td class="n">{{ p.stored_m3|vol }}</td></tr>{% endfor %}
+</tbody></table></details>
+{% endif %}
+
+<h2>Piano di irrigazione 2026</h2>
+{% if plans %}
+{% for p in plans %}
+<div class="card">
+<h3>{{ USES[p.use] }}{% if p.group %} · piano unico per {{ p.group_members|join(" e ") }}{% endif %}</h3>
+<table><tbody>
+<tr class="datarow"><th scope="row" style="font-weight:400">Previsto (pianificato)</th><td class="n">{% if p.planned_m3 is not none %}{{ fig(p.planned_m3|vol, p.as_of_date|it_date, p.doc, p.source_page, label="dati al") }}{% else %}<span class="na">{{ NA }}</span><br><span class="meta">una sola cifra per tutto il sistema</span>{% endif %}</td></tr>
+<tr class="datarow"><th scope="row" style="font-weight:400">Richiesto dagli utilizzatori</th><td class="n">{% if p.needs_m3 is not none %}{{ fig(p.needs_m3|vol, p.as_of_date|it_date, p.doc, p.source_page, label="dati al") }}{% else %}<span class="na">{{ NA }}</span>{% endif %}</td></tr>
+{% if p.usable %}<tr class="datarow"><th scope="row" style="font-weight:400">Volume utile netto nell'invaso</th><td class="n">{{ fig(p.usable.usable_m3|vol, p.usable.as_of_date|it_date, p.doc, p.usable.source_page, label="dati al") }}</td></tr>{% endif %}
+</tbody></table>
+{% if p.notes %}<p class="meta">{{ p.notes }}.</p>{% endif %}
+<p class="meta">Documento: <a href="{{ src_url(p.doc, p.source_page) }}">{{ src_label(p.doc) }}</a>, pagina {{ p.source_page }}.</p>
+</div>
+{% endfor %}
+<p class="meta">«Pianificato» è il volume che l'Autorità di Bacino assegna ai consorzi per l'anno. Non dice quando e come l'acqua arriva ai campi: per questo serve l'avviso del consorzio.</p>
+{% else %}
+<p class="na">{{ NA }}: nessun piano 2026 trovato per questo invaso.</p>
+{% endif %}
+{% for n in notes %}
+<div class="warn datarow">{% if n.code == "usable_gt_stored" %}<strong>Anomalia nel documento originale.</strong> Nel provvedimento il volume invasato risulta più basso del volume utile ({{ n.message.split("usable ")[1].split(" mc")[0]|int|vol }} utile contro {{ n.message.split("stored ")[1].split(" mc")[0]|int|vol }} invasato): probabilmente un errore di stampa. Qui non lo usiamo: il volume dell'invaso viene dal prospetto mensile. <a href="{{ src_url(docs_by_key[n.source_file], 4) }}">Documento originale</a>, dati al 20 aprile 2026.
+{% else %}<strong>Dato più vecchio.</strong> Il piano usa una misura del volume del 1 marzo 2025, cioè dell'anno prima. <a href="{{ src_url(docs_by_key[n.source_file], 3) }}">Documento originale</a>.{% endif %}</div>
+{% endfor %}
+
+<h2>Chi usa quest'acqua</h2>
+{% if links %}
+<ul class="plain">
+{% for l in links %}
+<li><a href="/consorzio/{{ l.consortium_id }}/">{{ consortia[l.consortium_id].name }}</a><br>
+<span class="meta">{{ relations[l.relation] }}. {% if l.doc %}<a href="{{ src_url(l.doc, l.source_page) }}">fonte</a>{% endif %}</span></li>
+{% endfor %}
+</ul>
+{% if comuni_served %}
+<h3>Comuni dei consorzi collegati</h3>
+<p class="meta">Comuni nel comprensorio dei consorzi di distretto indicati sopra. Non tutti ricevono acqua da questo invaso.</p>
+<ul class="cols">{% for c, m in comuni_served %}<li><a href="/comune/{{ c.slug }}/">{{ c.name }}</a></li>{% endfor %}</ul>
+{% else %}
+<p class="na">{{ NA }}: non sappiamo ancora quali comuni dipendano da quest'invaso.</p>
+{% endif %}
+{% else %}
+<p class="na">{{ NA }}: nessun documento collega quest'invaso a un consorzio.</p>
+{% endif %}
+{% endblock %}

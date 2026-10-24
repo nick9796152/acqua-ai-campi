@@ -1,0 +1,39 @@
+# Acqua ai Campi: static site served from the symlink the update job switches.
+# ACQUA_DOMAIN comes from /etc/acqua.env (for example acquaaicampi.example). With no domain set,
+# the site is served on plain HTTP port 80 (testing only).
+{$ACQUA_DOMAIN:http://} {
+	root * /srv/acqua/state/current
+	encode zstd gzip
+	file_server
+
+	handle_errors {
+		rewrite * /404.html
+		file_server
+	}
+
+	header {
+		Cache-Control "public, max-age=600"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "no-referrer"
+		Permissions-Policy "geolocation=(), camera=(), microphone=()"
+		# the pages use one inline stylesheet and one inline script, no external requests
+		Content-Security-Policy "default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"
+		-Server
+	}
+
+	log {
+		output file /var/log/caddy/acqua.log {
+			roll_size 10mb
+			roll_keep 5
+		}
+		# no IP addresses in the access log (the site promises no tracking)
+		format filter {
+			wrap console
+			fields {
+				request>remote_ip delete
+				request>client_ip delete
+				request>headers delete
+			}
+		}
+	}
+}

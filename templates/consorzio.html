@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% from "macros.html" import fig, fig_url, meta %}
+{% block content %}
+<p class="crumbs"><a href="/">Home</a> › Consorzi</p>
+<h1>{{ c.name }}</h1>
+<p class="lead">{% if parent %}Fa parte del <a href="/consorzio/{{ parent.id }}/">{{ parent.name }}</a>.{% else %}Consorzio regionale.{% endif %}</p>
+<div class="card">
+<p><strong>Contatto:</strong>
+{% if c.contact %}PEC <a href="mailto:{{ c.contact }}">{{ c.contact }}</a><br>{{ meta(c.contact_date|it_date, c.contact_doc, c.contact_source_page, label="indirizzo da un documento del") }}
+{% else %}<span class="na">{{ NA }}</span>{% endif %}</p>
+<p><strong>Apertura della stagione irrigua, prenotazioni, tariffe:</strong> <span class="na">{{ NA }}</span><br>
+<span class="meta">Non abbiamo trovato avvisi ufficiali di questo consorzio.</span></p>
+{% if c.note %}<p class="meta">{{ c.note }}.</p>{% endif %}
+</div>
+
+{% if children %}
+<h2>Consorzi che ne fanno parte</h2>
+<ul class="plain">{% for k in children %}<li><a href="/consorzio/{{ k.id }}/">{{ k.name }}</a></li>{% endfor %}</ul>
+{% endif %}
+
+<h2>Invasi collegati</h2>
+{% if direct %}
+<ul class="plain">
+{% for l in direct %}{% set r = reservoirs[l.reservoir_id] %}
+<li><a href="/invaso/{{ r.slug }}/">{{ r.name }}</a>
+{% if r.now %}— {{ fig(r.now.stored_m3|vol, latest.doc_date|it_date, latest, r.now.source_page) }}{% endif %}<br>
+<span class="meta">{{ relations[l.relation] }}. {% if l.doc %}<a href="{{ src_url(l.doc, l.source_page) }}">documento</a>{% endif %}</span></li>
+{% endfor %}
+</ul>
+{% else %}
+<p class="na">{{ NA }}: nessun documento collega invasi direttamente a questo consorzio.</p>
+{% endif %}
+{% if regional %}
+<h3>Invasi del {{ parent.name }}</h3>
+<p class="meta">Documenti indirizzati al consorzio regionale, senza indicare il distretto.</p>
+<ul class="cols">{% for l in regional %}{% set r = reservoirs[l.reservoir_id] %}<li><a href="/invaso/{{ r.slug }}/">{{ r.name }}</a></li>{% endfor %}</ul>
+{% endif %}
+
+<h2>Comuni del comprensorio</h2>
+{% if comuni_list %}
+<p class="meta">{{ comuni_list|length }} comuni ({{ comuni_list[0][1].label }} {{ comuni_list[0][1].date_text }} · <a href="{{ comuni_list[0][1].url }}">fonte</a>). Dove è indicato, gli ettari sono la parte del comune compresa nel comprensorio.</p>
+<ul class="cols">{% for cm, m in comuni_list %}<li><a href="/comune/{{ cm.slug }}/">{{ cm.name }}</a>{% if m.area_ha_in_comprensorio %} <span class="meta">{{ m.area_ha_in_comprensorio }} ha</span>{% endif %}</li>{% endfor %}</ul>
+{% else %}
+<p class="na">{{ NA }}: non abbiamo ancora l'elenco dei comuni di questo consorzio.</p>
+{% endif %}
+{% endblock %}

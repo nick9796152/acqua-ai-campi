@@ -1,0 +1,9 @@
+[Unit]
+Description=Fallback Telegram alert when the update service crashed
+
+[Service]
+Type=oneshot
+User=acqua
+EnvironmentFile=/etc/acqua.env
+# curl -f -sS prints no URL on failure, so the bot token stays out of the journal.
+ExecStart=/bin/sh -c 'curl -fsS -o /dev/null --max-time 20 "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" --data-urlencode "chat_id=$TELEGRAM_CHAT_ID" --data-urlencode "text=Acqua ai Campi: the update service CRASHED (not a data problem). The live site is unchanged. On the server: journalctl -u acqua-update -n 50"'

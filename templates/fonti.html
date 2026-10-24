@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Fonti e metodo</h1>
+<p class="lead">Da dove vengono i numeri, come li abbiamo letti e che cosa ancora manca.</p>
+
+<h2>Regole che seguiamo</h2>
+<ul>
+<li>Ogni numero viene da un documento pubblico e ha accanto la data del dato (quella scritta nel documento, non il giorno in cui l'abbiamo scaricato) e il collegamento al documento.</li>
+<li>Non stimiamo e non inventiamo nulla. Se un dato manca scriviamo «Dato non disponibile».</li>
+<li>Se un documento contiene un'anomalia la mostriamo com'è e la segnaliamo (vedi più sotto).</li>
+<li>Non esprimiamo giudizi su consorzi o istituzioni.</li>
+</ul>
+
+<h2>Volumi degli invasi (ogni mese)</h2>
+<p>La Regione Siciliana, Autorità di Bacino del Distretto Idrografico, pubblica a inizio mese il «Prospetto volumi invasati nelle dighe della Sicilia»: capacità e volume di ogni diga, con il confronto col mese prima e con lo stesso mese dell'anno prima. I dati sono «rilevati da strumenti di misura o da comunicazioni dei gestori al lordo»: sono volumi invasati, non acqua disponibile per i campi.</p>
+<p>Abbiamo letto {{ monthly|length }} prospetti, da {{ monthly[0].doc_date|it_date }} a {{ monthly[-1].doc_date|it_date }}. Pagina di partenza: <a href="https://www.regione.sicilia.it/istituzioni/regione/strutture-regionali/presidenza-regione/autorita-bacino-distretto-idrografico-sicilia/siti-tematici/risorse-idriche/volumi-invasati-nelle-dighe-della-sicilia">Volumi invasati nelle dighe della Sicilia</a>.</p>
+<details><summary>Elenco dei {{ monthly|length }} prospetti</summary>
+<ul class="cols">{% for m in monthly|reverse %}<li><a href="{{ m.url }}">{{ m.doc_date|it_date }}</a></li>{% endfor %}</ul></details>
+<p class="meta">Controllo: per ognuno la somma delle righe che abbiamo letto coincide con la riga «TOTALI» stampata nel documento.</p>
+
+<h2>Piani di irrigazione 2026</h2>
+<p>Ogni anno l'Autorità di Bacino stabilisce quanta acqua di ogni invaso è assegnata a irrigazione, uso potabile e industria («volume pianificato»), a partire dalle richieste degli utilizzatori. Il piano vale fino al 31 dicembre 2026 e i dati sono di marzo-aprile 2026.</p>
+<table>
+<thead><tr><th scope="col">Documento</th><th scope="col">Data</th></tr></thead>
+<tbody>
+{% for x in plan_docs %}<tr><td><a href="{{ x.url }}">{{ x.title }}</a> <span class="meta">(prot. {{ x.protocol }})</span></td><td>{{ x.doc_date|it_date }}</td></tr>{% endfor %}
+</tbody></table>
+<p class="meta">La data è quella indicata dalla pagina dell'Autorità; in alcuni PDF il numero di protocollo e la data sono lasciati in bianco.</p>
+
+<h2>Consorzi e comuni</h2>
+<p>I comuni di un consorzio vengono dallo statuto o da relazioni del consorzio stesso. Oggi abbiamo l'elenco per due consorzi: il Consorzio di Bonifica 9 Catania (statuto, 20 comuni più 7 aggiunti nel 2026) e il Consorzio di Bonifica 3 Agrigento (53 comuni elencati; il documento ne dichiara 56). Per gli altri non abbiamo trovato un elenco pubblico.</p>
+<p>Il collegamento invaso-consorzio viene dai documenti di pianificazione (a chi sono indirizzati, chi ha chiesto i volumi) e dal gestore indicato nel prospetto. Quasi sempre è a livello di Consorzio regionale, non di singolo distretto irriguo.</p>
+<p>I nomi e i codici dei comuni sono quelli ISTAT (elenco aggiornato al 21 febbraio 2026).</p>
+
+<h2>Che cosa non c'è ancora</h2>
+<ul>
+<li>Date di apertura della stagione irrigua, prenotazioni e tariffe: non abbiamo trovato avvisi ufficiali dei consorzi. Sono segnalati solo dalla stampa, che non usiamo come fonte.</li>
+<li>L'elenco dei comuni per i consorzi di Trapani, Palermo, Caltanissetta, Gela, Enna, Caltagirone, Ragusa e Siracusa.</li>
+<li>Un disegno di legge del gennaio 2026 prevede di sostituire i consorzi attuali con quattro nuovi enti. I nomi dei consorzi potrebbero cambiare.</li>
+</ul>
+
+<h2>Anomalie nei documenti originali</h2>
+<p>Le abbiamo lasciate come stampate e le segnaliamo qui.</p>
+<ul>
+{% for f in flags if f.code in ("usable_gt_stored", "stale_reading") %}
+<li><strong>{{ reservoirs[f.reservoir_id].name }}</strong>: {{ {"usable_gt_stored": "nel provvedimento di pianificazione il volume invasato è più basso del volume utile (probabile errore di stampa)", "stale_reading": "il piano usa un volume misurato il 1 marzo 2025"}[f.code] }}.</li>
+{% endfor %}
+<li><strong>Santa Rosalia</strong> e, in alcuni mesi, <strong>Piano del Leone</strong>: nei prospetti mensili il volume supera la capacità dichiarata ({{ flags|selectattr("code", "equalto", "stored_gt_capacity")|list|length }} segnalazioni dal 2022).</li>
+<li>La Regione ritocca a volte i propri numeri: in {{ n_revised }} casi il valore di un mese, ristampato in un prospetto successivo (colonne «mese precedente» e «anno precedente»), è diverso da quello del prospetto originale. Per il confronto con l'anno scorso usiamo il valore stampato nel prospetto più recente.</li>
+<li>I prospetti fino a febbraio 2023 elencano 25 dighe, poi 28-29 e dal 2024 30: l'elenco è cresciuto nel tempo ({{ n_short }} prospetti hanno meno di 30 righe) e i totali stampati coincidono comunque con le righe lette.</li>
+</ul>
+
+<h2>Come aggiorniamo</h2>
+<p>Il sito è generato da un programma che scarica i documenti, li legge, li controlla e poi costruisce le pagine. Se un controllo fallisce, la versione precedente resta online. Ultimo prospetto letto: {{ latest.doc_date|it_date }}; pagine generate il {{ built_on|it_date }}.</p>
+{% endblock %}

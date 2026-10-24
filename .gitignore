@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+site/
+deploy-state/
+data/acqua.sqlite
+data/raw/
+.venv/

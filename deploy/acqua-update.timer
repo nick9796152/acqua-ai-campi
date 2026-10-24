@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily update of Acqua ai Campi
+
+[Timer]
+OnCalendar=*-*-* 06:30:00 Europe/Rome
+RandomizedDelaySec=10min
+Persistent=true
+
+[Install]
+WantedBy=timers.target
